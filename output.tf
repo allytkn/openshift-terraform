@@ -1,7 +1,7 @@
-output "openshift master" {
+output "openshift-master" {
   value = "${aws_lb.master_alb.dns_name}"
 }
-output "openshift subdomain" {
+output "openshift-subdomain" {
   value = "${aws_lb.infra_alb.dns_name}"
 }
 output "bastion" {
