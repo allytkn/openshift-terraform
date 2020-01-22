@@ -3,14 +3,14 @@ resource "aws_vpc" "default" {
     cidr_block = "${var.vpc_cidr}"
     enable_dns_support = true
     enable_dns_hostnames = true
-    tags {
+    tags = {
       Name = "VPC"
     }
 }
 resource "aws_subnet" "PublicSubnetA" {
   vpc_id = "${aws_vpc.default.id}"
   cidr_block = "${var.public_subnet_a}"
-  tags {
+  tags = {
         Name = "Public Subnet A"
   }
  availability_zone = "${data.aws_availability_zones.available.names[0]}"
@@ -18,7 +18,7 @@ resource "aws_subnet" "PublicSubnetA" {
 resource "aws_subnet" "PublicSubnetB" {
   vpc_id = "${aws_vpc.default.id}"
   cidr_block = "${var.public_subnet_b}"
-  tags {
+  tags = {
         Name = "Public Subnet B"
   }
  availability_zone = "${data.aws_availability_zones.available.names[1]}"
@@ -26,7 +26,7 @@ resource "aws_subnet" "PublicSubnetB" {
 resource "aws_subnet" "PublicSubnetC" {
   vpc_id = "${aws_vpc.default.id}"
   cidr_block = "${var.public_subnet_c}"
-  tags {
+  tags = {
         Name = "Public Subnet C"
   }
  availability_zone = "${data.aws_availability_zones.available.names[2]}"
@@ -34,7 +34,7 @@ resource "aws_subnet" "PublicSubnetC" {
 resource "aws_subnet" "PrivateSubnetA" {
   vpc_id = "${aws_vpc.default.id}"
   cidr_block = "${var.private_subnet_a}"
-  tags {
+  tags = {
         Name = "Private Subnet A"
   }
  availability_zone = "${data.aws_availability_zones.available.names[0]}"
@@ -42,7 +42,7 @@ resource "aws_subnet" "PrivateSubnetA" {
 resource "aws_subnet" "PrivateSubnetB" {
   vpc_id = "${aws_vpc.default.id}"
   cidr_block = "${var.private_subnet_b}"
-  tags {
+  tags = {
         Name = "Private Subnet B"
   }
  availability_zone = "${data.aws_availability_zones.available.names[1]}"
@@ -50,7 +50,7 @@ resource "aws_subnet" "PrivateSubnetB" {
 resource "aws_subnet" "PrivateSubnetC" {
   vpc_id = "${aws_vpc.default.id}"
   cidr_block = "${var.private_subnet_c}"
-  tags {
+  tags = {
         Name = "Private Subnet C"
   }
  availability_zone = "${data.aws_availability_zones.available.names[2]}"
@@ -81,7 +81,7 @@ resource "aws_route_table_association" "PrivateSubnetC" {
 }
 resource "aws_internet_gateway" "gw" {
    vpc_id = "${aws_vpc.default.id}"
-    tags {
+    tags = {
         Name = "Internet Gateway"
     }
 }
@@ -127,13 +127,13 @@ resource "aws_network_acl" "all" {
         from_port = 0
         to_port = 0
     }
-    tags {
+    tags = {
         Name = "open acl"
     }
 }
 resource "aws_route_table" "public_route_a" {
   vpc_id = "${aws_vpc.default.id}"
-  tags {
+  tags = {
       Name = "Public Route A"
   }
   route {
@@ -143,7 +143,7 @@ resource "aws_route_table" "public_route_a" {
 }
 resource "aws_route_table" "public_route_b" {
   vpc_id = "${aws_vpc.default.id}"
-  tags {
+  tags = {
       Name = "Public Route B"
   }
   route {
@@ -153,7 +153,7 @@ resource "aws_route_table" "public_route_b" {
 }
 resource "aws_route_table" "public_route_c" {
   vpc_id = "${aws_vpc.default.id}"
-  tags {
+  tags = {
       Name = "Public Route C"
   }
   route {
@@ -163,7 +163,7 @@ resource "aws_route_table" "public_route_c" {
 }
 resource "aws_route_table" "private_route_a" {
   vpc_id = "${aws_vpc.default.id}"
-  tags {
+  tags = {
       Name = "Private Route A"
   }
   route {
@@ -173,7 +173,7 @@ resource "aws_route_table" "private_route_a" {
 }
 resource "aws_route_table" "private_route_b" {
   vpc_id = "${aws_vpc.default.id}"
-  tags {
+  tags = {
       Name = "Private Route B"
   }
   route {
@@ -183,7 +183,7 @@ resource "aws_route_table" "private_route_b" {
 }
 resource "aws_route_table" "private_route_c" {
   vpc_id = "${aws_vpc.default.id}"
-  tags {
+  tags = {
       Name = "Private Route C"
   }
   route {
