@@ -4,7 +4,7 @@ resource "aws_lb" "master_alb" {
   load_balancer_type = "network"
   subnets            = ["${aws_subnet.PublicSubnetA.id}","${aws_subnet.PublicSubnetB.id}","${aws_subnet.PublicSubnetC.id}"]
   enable_cross_zone_load_balancing  = true
-  tags {
+  tags = {
     Name = "master_alb"
   }
 }
@@ -14,7 +14,7 @@ resource "aws_lb" "infra_alb" {
   security_groups = ["${aws_security_group.sec_infra_alb.id}"]
   internal        = false
   idle_timeout    = 60
-  tags {
+  tags = {
     Name    = "infra_alb"
   }
 }
@@ -23,7 +23,7 @@ resource "aws_lb_target_group" "group_master_alb" {
   port     = "8443"
   protocol = "TCP"
   vpc_id   = "${aws_vpc.default.id}"
-  tags {
+  tags = {
     name = "group_master_alb"
   }
 }
@@ -32,7 +32,7 @@ resource "aws_lb_target_group" "group_infra_alb" {
   port     = "80"
   protocol = "HTTP"
   vpc_id   = "${aws_vpc.default.id}"
-  tags {
+  tags = {
     name = "group_infra_alb"
   }
   stickiness {
