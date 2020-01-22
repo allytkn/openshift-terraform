@@ -1,6 +1,6 @@
 data "template_file" "inventory" {
   template = "${file("${path.cwd}/helper_scripts/ansible-hosts.template.txt")}"
-  vars {
+  vars = {
     public_subdomain = "${aws_lb.infra_alb.dns_name}"
     admin_hostname = "${aws_lb.master_alb.dns_name}"
     master1_hostname = "${aws_instance.master1.private_dns}"
