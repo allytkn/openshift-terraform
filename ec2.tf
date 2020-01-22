@@ -12,7 +12,7 @@ resource "aws_instance" "bastion" {
   associate_public_ip_address = true
   key_name = "${aws_key_pair.bastion.id}"
   user_data = "${data.template_file.sysprep-bastion.rendered}"
-  tags {
+  tags = {
     Name = "Bastion"
   }
 }
@@ -31,7 +31,7 @@ resource "aws_instance" "master1" {
   ]
   key_name = "${aws_key_pair.openshift.id}"
   user_data = "${data.template_file.sysprep-openshift.rendered}"
-  tags {
+  tags = {
     Name = "Master-1"
   }
 }
@@ -58,7 +58,7 @@ resource "aws_instance" "master2" {
   ]
   key_name = "${aws_key_pair.openshift.id}"
   user_data = "${data.template_file.sysprep-openshift.rendered}"
-  tags {
+  tags = {
     Name = "Master-2"
   }
 }
@@ -85,7 +85,7 @@ resource "aws_instance" "master3" {
   ]
   key_name = "${aws_key_pair.openshift.id}"
   user_data = "${data.template_file.sysprep-openshift.rendered}"
-  tags {
+  tags = {
     Name = "Master-3"
   }
 }
@@ -112,7 +112,7 @@ resource "aws_instance" "worker1" {
   ]
   key_name = "${aws_key_pair.openshift.id}"
   user_data = "${data.template_file.sysprep-openshift.rendered}"
-  tags {
+  tags = {
     Name = "Worker-1"
   }
 }
@@ -150,7 +150,7 @@ resource "aws_instance" "worker2" {
   ]
   key_name = "${aws_key_pair.openshift.id}"
   user_data = "${data.template_file.sysprep-openshift.rendered}"
-  tags {
+  tags = {
     Name = "Worker-2"
   }
 }
@@ -188,7 +188,7 @@ resource "aws_instance" "worker3" {
   ]
   key_name = "${aws_key_pair.openshift.id}"
   user_data = "${data.template_file.sysprep-openshift.rendered}"
-  tags {
+  tags = {
     Name = "Worker-3"
   }
 }
@@ -226,7 +226,7 @@ resource "aws_instance" "infra1" {
   ]
   key_name = "${aws_key_pair.openshift.id}"
   user_data = "${data.template_file.sysprep-openshift.rendered}"
-  tags {
+  tags = {
     Name = "Infra-1"
   }
 }
@@ -263,7 +263,7 @@ resource "aws_instance" "infra2" {
   ]
   key_name = "${aws_key_pair.openshift.id}"
   user_data = "${data.template_file.sysprep-openshift.rendered}"
-  tags {
+  tags = {
     Name = "Infra-2"
   }
 }
@@ -301,7 +301,7 @@ resource "aws_instance" "infra3" {
   ]
   key_name = "${aws_key_pair.openshift.id}"
   user_data = "${data.template_file.sysprep-openshift.rendered}"
-  tags {
+  tags = {
     Name = "Infra-3"
   }
 }
